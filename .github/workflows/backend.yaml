@@ -1,0 +1,12 @@
+name: backend
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubunts-latest
+    steps:
+      - run: echo Hello-world
