@@ -1,5 +1,7 @@
 # サンプルアプリケーション
 
+[![backend](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml/badge.svg)](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml)
+
 静的なフロントエンドと Web API から成る、足し算アプリケーションです。
 
 ## 開発モードでの起動手順
@@ -26,5 +28,3 @@ npm ci
 npm run build
 node dist/index.js
 ```
-
-[![backend](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml/badge.svg)](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml)
