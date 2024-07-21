@@ -3,8 +3,9 @@ name: backend
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
+    # 日本時間で毎晩 21 時
     - cron: '0 12 * * *'
 
 defaults:
@@ -23,18 +24,18 @@ jobs:
       - run: npm ci
       - run: npm run test -- --coverage
       - run: npm run build
+
       - run: node dist/index.js &
-      - run: npx wait-on --timeout 10000 http://localhost:8080/api/health
+      - run: npx wait-on -t 10000 http://localhost:8080/api/health
       - run: npm run test:api
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: coverage
           path: backend/coverage/**
           retention-days: 5
-
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           name: dist
           path: backend/dist/index.js
