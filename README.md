@@ -1,6 +1,6 @@
 # サンプルアプリケーション
 
-[![backend](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml/badge.svg)](https://github.com/clerk1983/github-action/actions/workflows/backend.yaml)
+[![backend](https://github.com/clerk1983/github-action/actions/workflows/backend.yml/badge.svg)](https://github.com/clerk1983/github-action/actions/workflows/backend.yml)
 
 静的なフロントエンドと Web API から成る、足し算アプリケーションです。
 
