@@ -51,15 +51,15 @@ jobs:
           key: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
           known_hosts: ${{ secrets.BACKEND_SERVER_KNWON_HOSTS }}
 
-      - run: rsync -v ./dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+      - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
         env:
           SERVER_USER: ${{ secrets.BACKEND_SERVER_USER}}
           SERVER_IP: ${{ secrets.BACKEND_SERVER_IP}}
-      - run: ssh -i ${SERVER_USER}@${SERVER_IP} sudo systemctl restart backend
+      - run: ssh ${SERVER_USER}@${SERVER_IP} sudo systemctl restart backend
         env:
           SERVER_USER: ${{ secrets.BACKEND_SERVER_USER}}
           SERVER_IP: ${{ secrets.BACKEND_SERVER_IP}}
-      - run: ssh -i ${SERVER_USER}@${SERVER_IP} systemctl status backend
+      - run: ssh ${SERVER_USER}@${SERVER_IP} systemctl status backend
         env:
           SERVER_USER: ${{ secrets.BACKEND_SERVER_USER}}
           SERVER_IP: ${{ secrets.BACKEND_SERVER_IP}}
