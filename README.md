@@ -88,3 +88,26 @@ journalctl -u backend
 ```console
 sudo ps kill
 ```
+
+## GitHub Actions での自動デプロイ用 IAM Role のカスタム信頼ポリシー
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "<作成したIDプロバイダのARN>"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+          "token.actions.githubusercontent.com:sub": "repo:<GitHubの組織またはアカウント名>/<GitHubのリポジトリ名>:ref:refs/heads/main"
+        }
+      }
+    }
+  ]
+}
+```
