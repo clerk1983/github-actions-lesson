@@ -1,0 +1,17 @@
+name: frontend
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: aws s3 sync . s3://udemy-github-actions-fj23-hkk-s3 --exact-timestamps --region ap-northeast-1
