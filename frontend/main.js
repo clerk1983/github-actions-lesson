@@ -1,5 +1,5 @@
 // API の URL を 'http://203.0.113.10' のように指定してください。
-const API_URL_PREFIX = ''
+const API_URL_PREFIX = 'http://35.76.76.0'
 
 const input1Element = document.getElementById('input1')
 const input2Element = document.getElementById('input2')
@@ -16,7 +16,7 @@ async function onInputChange() {
 
   const query = new URLSearchParams({
     input1: parseInt(input1),
-    input2: parseInt(input2)
+    input2: parseInt(input2),
   })
 
   const response = await fetch(`${API_URL_PREFIX}/api/sum?${query}`)
